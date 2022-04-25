@@ -7,6 +7,8 @@
 int check_cycle(listint_t *list)
 {
 	struct listint_s *cycle;
+	if (list == NULL || list->next == NULL)
+		return (0);
 	cycle = list;
 	while (list->next != NULL)
 	{
