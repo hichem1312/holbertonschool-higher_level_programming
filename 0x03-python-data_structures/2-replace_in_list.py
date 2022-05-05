@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def replace_in_list(my_list, idx, element):
-    elif (my_list[idx] < 0):
+    if (my_list[idx] < 0):
         return(my_list)
     elif (idx in range(0, len(my_list))):
         my_list[idx] = element
