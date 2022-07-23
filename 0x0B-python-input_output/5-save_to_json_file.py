@@ -7,6 +7,5 @@ import json
 
 def save_to_json_file(my_obj, filename):
     '''define'''
-    j = json.dumps(my_obj)
-    with open(filename, "a", encoding="UTF-8") as file:
-        file.write(j)
+    with  open(filename, mode="w+") as f:
+         json.dump(my_obj, f)
