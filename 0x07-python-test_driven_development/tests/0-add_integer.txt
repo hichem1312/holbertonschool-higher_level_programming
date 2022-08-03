@@ -1,0 +1,51 @@
+::
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(1, 5)
+	6
+
+::
+	>>> add_integer(3)
+	101
+
+::
+	>>> add_integer(2.4, 3)
+	5
+
+::
+	>>> try:
+	... 	add_integer("a")
+	... except Exception as x:
+	... 	print(x)
+	a must be an integer
+
+
+::
+	>>> try:
+	... 	add_integer(5, "b")
+	... except Exception as x:
+	... 	print(x)
+	b must be an integer
+
+
+::
+	>>> try:
+	... 	add_integer()
+	... except Exception as x:
+	... 	print(x)
+	add_integer() missing 1 required positional argument: 'a'
+
+
+::
+	>>> try:
+	... 	add_integer(float('NaN'))
+	... except Exception as x:
+	... 	print(x)
+	cannot convert float NaN to integer
+
+::
+	>>> try:
+	... 	add_integer(float('inf'))
+	... except Exception as x:
+	... 	print(x)
+	cannot convert float infinity to integer
