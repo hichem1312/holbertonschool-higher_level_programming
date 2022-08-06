@@ -4,10 +4,10 @@ import MySQLdb as sql
 from sys import argv
 
 
-def main(user, password, db):
+def main(user, password, data):
     """print states"""
-    db = sql.connect(host='localhost', user=user, password=password, db=db, port=3306)
-    c = db.cursor()
+    data = sql.connect(host='localhost', user=user, password=password, db=data, port=3306)
+    c = data.cursor()
     c.execute("""SELECT id, name FROM states ORDER BY id;""")
     x = c.fetchall()
     for i in x:
