@@ -13,5 +13,6 @@ def main(user, password, db):
     for i in x:
         print(i)
 
+
 if __name__ == '__main__':
     main(argv[1], argv[2], argv[3])
