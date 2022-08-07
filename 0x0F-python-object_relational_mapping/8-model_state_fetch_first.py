@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List first state using ORM."""
+"""List states with orm"""
 from sys import argv
 from model_state import Base, State
 from sqlalchemy import (create_engine)
@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 def main(user, password, data):
-    """List first state in database and print result in order."""
+    """print states"""
     engin = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(user, password, data), pool_pre_ping=True)
     Base.metadata.create_all(engin)
