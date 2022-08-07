@@ -9,7 +9,7 @@ def main(user, password, data, state):
     data = sql.connect(host='localhost', user=user
             , password=password, db=data, port=3306)
     a = data.cursor()
-    a.execute("""SELECT id, name FROM states 
+    a.execute("""SELECT id, name FROM states
             WHERE name=%s
             ORDER BY id;""",
             (state,))
