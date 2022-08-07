@@ -13,7 +13,7 @@ def main(user, password, data):
     Base.metadata.create_all(engin)
     Session = sessionmaker(bind=engin)
     s = Session()
-    state = s.query(state).first()
+    state = s.query(State).first()
     if state:
         print("{:d}: {:s}".format(state.id, state.name))
     else:
