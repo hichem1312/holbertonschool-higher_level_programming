@@ -11,8 +11,8 @@ def main(user, password, data):
     engin = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(user, password, data), pool_pre_ping=True)
     Base.metadata.create_all(engin)
-    session = sessionmaker(bind=engin)
-    s = session()
+    Session = sessionmaker(bind=engin)
+    s = Session()
     state = s.query(state).first()
     if state:
         print("{:d}: {:s}".format(state.id, state.name))
