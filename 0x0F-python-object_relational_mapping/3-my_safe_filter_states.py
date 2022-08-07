@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""list all states"""
+"""list all states."""
 import MySQLdb as sql
 from sys import argv
 
 
 def main(user, password, data, state):
-    """print states"""
+    """print states."""
     data = sql.connect(host='localhost', user=user
             , password=password, db=data, port=3306)
     a = data.cursor()
