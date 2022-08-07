@@ -10,7 +10,7 @@ def main(user, password, data, state):
             , password=password, db=data, port=3306)
     a = data.cursor()
     a.execute("SELECT id, name FROM states \
-            WHERE name = '{:s} ORDER BY id;".format(state))
+            WHERE name = '{:s}' ORDER BY id;".format(state))
     x = a.fetchall()
     for i in x:
         if i[1] == state:
