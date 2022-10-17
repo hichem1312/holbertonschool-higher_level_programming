@@ -6,17 +6,18 @@ from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 
-def main(user, password, data):
-    """print states"""
-    engin = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                           .format(user, password, data), pool_pre_ping=True)
-    Base.metadata.create_all(engin)
-    Session = sessionmaker(bind=engin)
-    s = Session()
-    for i in s.query(State).order_by(State.id):
-        if 'a' in i.name:
-            print("{:d}: {:s}".format(i.id, i.name))
+if __name__ == "__main__":
 
+    user = argv[1]
+    password = argv[2]
+    database = argv[3]
 
-if __name__ == '__main__':
-    main(argv[1], argv[2], argv[3])
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format
+                           (user, password, database), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
+
+    session = Session(engine)
+    for state in session.query(State).order_by(State.id.asc()).all():
+        if 'a' in state.name:
+            print("{}: {}".format(state.id, state.name))
+    session.close()
