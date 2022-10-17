@@ -6,8 +6,8 @@ from sys import argv
 
 def main(user, password, data):
     """print states"""
-    data = sql.connect(host='localhost', user=user
-            , password=password, db=data, port=3306)
+    data = sql.connect(host="localhost", port=3306, user=user,
+                       password=password, db=data)
     a = data.cursor()
     a.execute("""SELECT id, name FROM states ORDER BY id;""")
     x = a.fetchall()
