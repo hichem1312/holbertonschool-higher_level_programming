@@ -4,21 +4,22 @@ from sys import argv
 from model_state import Base, State
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
+if __name__ == "__main__":
 
+    user = argv[1]
+    password = argv[2]
+    data = argv[3]
 
-def main(user, password, data):
-    """print states"""
-    engin = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                           .format(user, password, data), pool_pre_ping=True)
-    Base.metadata.create_all(engin)
-    Session = sessionmaker(bind=engin)
-    s = Session()
-    state = s.query(State).first()
-    if state:
-        print("{:d}: {:s}".format(state.id, state.name))
+    eng = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format
+                        (user, password, data), pool_pre_ping=True)
+    Base.metadata.create_all(eng)
+
+    session = Session(eng)
+    state = session.query(State).first()
+
+    if state is not None:
+        print("{}: {}".format(state.id, state.name))
     else:
         print("Nothing")
 
-
-if __name__ == '__main__':
-    main(argv[1], argv[2], argv[3])
+    session.close()
