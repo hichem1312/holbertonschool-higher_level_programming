@@ -6,8 +6,8 @@ from sys import argv
 
 def main(user, password, data):
     """Show cities in database and print result in order."""
-    data = sql.connect(host='localhost', user=user
-            , password=password, db=data, port=3306)
+    data = sql.connect(host='localhost', user=user,
+                       password=password, db=data, port=3306)
     a = data.cursor()
     a.execute("""
             SELECT c.id, c.name, s.name FROM cities c
